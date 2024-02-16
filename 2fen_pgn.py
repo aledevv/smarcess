@@ -1,6 +1,10 @@
 import chess
 import chess.svg
 
+def compare_FEN(fen1, fen2):
+    return reducedFEN(fen1) == reducedFEN(fen2) #bool
+    
+
 def reducedFEN(fen):
     return fen.split(' ')[0] #i take only the first part of the fen
 
@@ -12,7 +16,8 @@ def Two_fen_to_pgn(fen_before, fen_after): #function to compere two fen
        
         board_clone.push(move) #all the possible legal moves
         #print(board_clone.fen())
-        if reducedFEN(board_clone.fen()) == reducedFEN(fen_after): #compare the possible configuration of the chess board with the real one
+
+        if compare_FEN(board_clone.fen(), fen_after): #compare the possible configuration of the chess board with the real one
           #  print("The move is: ", board.san(move))     # san = standard algebric notation
             return move
 
