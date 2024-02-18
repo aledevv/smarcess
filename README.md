@@ -6,6 +6,7 @@
 <img src="assets/chess2.png" alt="drawing" width="150"/>
 </div>
 
+<br>
 
 ![Author](https://img.shields.io/badge/Author-Alessandro_De_Vidi-blue)
 ![Author](https://img.shields.io/badge/Author-Daniele_Marisa-blue)
