@@ -1,21 +1,21 @@
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
-
-
-## Badges
-
-Add badges from somewhere like: [shields.io](https://shields.io/)
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
-
 
 # Smartchess
 
+<div align='center' style='padding: 10px'>
+<img src="assets/chess2.png" alt="drawing" width="150"/>
+</div>
 
 
-A brief description of what this project does and who it's for
+![Author](https://img.shields.io/badge/Author-Alessandro_De_Vidi-blue)
+![Author](https://img.shields.io/badge/Author-Daniele_Marisa-blue)
+![Author](https://img.shields.io/badge/Author-Enrico_Tenuti-blue)
+
+![Version](https://img.shields.io/badge/Version-1.0-brightgreen)
+![Platform](https://img.shields.io/badge/Platform-Python-orange)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+Application for Raspberry PI to play chess games on a real chessboard against Stockfish chess engine.
 
 
 
@@ -24,36 +24,64 @@ A brief description of what this project does and who it's for
 
 Insert gif or link to demo
 
-
-## Roadmap
-
-- Hardware
-
-- Software
-
-
 ## Project Layout
 
-Directory tree
+```bash
+├── 2fen_pgn.py
+├── README.md
+├── assets
+│   ├── chess.png
+│   ├── chess2.png
+│   └── state_machine.png
+├── engine.py
+├── gui.py
+├── images
+│   ├── png
+│   │   ├── 1.jpeg
+│   │   └── chessboard.png
+│   └── svg
+│       └── chessboard.svg
+├── libcairo.2.dylib
+├── main.py
+├── requirements.txt
+└── weights
+    ├── new_corners.pt
+    └── pieces.pt
+```
+
+
+## Requiremtnts
+
+### Hardware
+- Raspberry (PI 3/4 suggested)
+- Camera      ![instert model]---------------- ????
+- LCD display ------------------ ????
+- INSERT CABLES
+- Structure ....
+
+
+### Software and Dependencies
+- How to set up the environment Rasperry, camera and see if they are working...
+- Considerations about AI model that it is traine on that chess board and if someone wants to do it as well they have to re-train the model... potremmo dire come fare brevemente
 
 
 ## Installation
 
-Install my-project with npm
+Clone respository   [TO UPDATE]
 
 ```bash
-  npm install my-project
-  cd my-project
+git clone https://github.com/aledevv/smarcess.git
 ```
-    
+Install requirements
+```bash
+pip install -r -requirements.txt
+```
+
+
 ## Usage/Examples
 
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
+```bash
+python main.py
 ```
 
 
