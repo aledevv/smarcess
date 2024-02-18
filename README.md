@@ -88,12 +88,14 @@ python main.py
 
 ## Links
 
-- youtube video Link
+- [YouTube Demo Video]()    **_ADD LINK HERE_**
 
 - Presentation link (penso sia meglio Google Presentation)
 ## Authors
 
-- [@octokatherine](https://www.github.com/octokatherine)
+- [Alessandro De Vidi](https://www.github.com/aledevv)
+- [Daniele Marisa](https://github.com/DanMa02)
+- [Enrico Tenuti](https://github.com/enricotenuti)
 
 
 ## License
