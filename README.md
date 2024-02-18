@@ -2,7 +2,7 @@
 
 # Smartchess
 
-<div align='center' style='padding: 10px'>
+<div align='center' style='padding: 20px'>
 <img src="assets/chess2.png" alt="drawing" width="150"/>
 </div>
 
