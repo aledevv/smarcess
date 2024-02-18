@@ -26,6 +26,7 @@ Application for Raspberry PI to play chess games on a real chessboard against St
 Insert gif or link to demo
 
 ## Project Layout
+<<<<<<< Updated upstream
 
 ```bash
 ├── 2fen_pgn.py
@@ -52,6 +53,36 @@ Insert gif or link to demo
 
 
 ## Requiremtnts
+=======
+
+```bash
+├── 2fen_pgn.py
+├── README.md
+├── assets
+│   ├── chess.png
+│   ├── chess2.png
+│   └── state_machine.png
+├── engine.py
+├── gui.py
+├── images
+│   ├── png
+│   │   ├── 1.jpeg
+│   │   └── chessboard.png
+│   └── svg
+│       └── chessboard.svg
+├── libcairo.2.dylib
+├── main.py
+├── requirements.txt
+└── weights
+    ├── new_corners.pt
+    └── pieces.pt
+```
+
+
+## Requiremtnts
+
+![](https://img.shields.io/badge/Raspberry%20Pi-A22846?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white)
+>>>>>>> Stashed changes
 
 ### Hardware
 - Raspberry (PI 3/4 suggested)
