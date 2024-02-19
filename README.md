@@ -146,8 +146,10 @@ Install requirements
 ```bash
 pip install -r -requirements.txt
 ```
-
-
+Install tk-inter for gui
+```bash
+sudo apt-get install python-tk
+```
 ## Usage/Examples
 
 ```bash
