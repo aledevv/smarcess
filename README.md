@@ -45,7 +45,7 @@ Insert gif or link to demo
 2. A first model detects corners of the chessboard.
    <br> <img src="assets/corners.jpeg" width="500"/>
 3. Image is cropped and transformed from 3D into 2D and squares position is mapped through a grid.
-   <br> <img src="assets/grid.jpg" width="500"/>
+   <br> <img src="assets/grid_.png" width="500"/>
 > [!NOTE]  
 > Since the camera has wide angle the image results to be distorted, as a result the **grid could not be perfectly aligned** to the squares. An __offset__ parameter has been applied to adjust the grid position once the camera is set on a fixed position.
 
