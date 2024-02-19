@@ -41,26 +41,20 @@ Insert gif or link to demo
 
 ## Detection process
 1. When user makes a move a photo of their chessboard is taken
-   
-    ![User image](assets/photo.jpeg)
-3. A first model detects corners of the chessboard
-   
-    ![Corners](assets/corners.png)
-4. Image is cropped and transformed from 3D into 2D and squares position is mapped through a grid
-    ![Cropped and Transformed](assets/transformed.jpg)
-   
+    <br> <img src="assets/photo.jpg" width="500"/>
+2. A first model detects corners of the chessboard
+   <br> <img src="assets/corners.png" width="500"/>
+3. Image is cropped and transformed from 3D into 2D and squares position is mapped through a grid
+   <br> <img src="assets/grid.png" width="500"/>
 > [!NOTE]  
 > Since the camera has wide angle the image results to be distorted, as a result the **grid could not be perfectly aligned** to the squares. An __offset__ parameter has been applied to adjust the grid position once the camera is set on a fixed position.
 
 6. Pieces are detected with a second model
-
-    ![Detection](assets/detection.png)
-7. Piece positions are infered by intersecating bounding box areas with grid cells
-8. FEN is written and it can be exported to Lichess or sent to a Stockfish API for analysis
-   
-    ![Lichess FEN chessboard](assets/lichess_fen.png)
-
-The same process is described in the repo linked above.
+   <br> <img src="assets/detection.png" width="500"/>
+8. Piece positions are infered by intersecating bounding box areas with grid cells
+9. FEN is written and it can be exported to Lichess or sent to a Stockfish API for analysis
+    <br> <img src="assets/digital.png" width="500"/> <br>
+The same process is described in [this repo](https://github.com/shainisan/real-life-chess-vision?ref=blog.roboflow.com).
 
 ## Training
 We used YOLOv8n models to both train corners and pieces recognition.
