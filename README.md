@@ -111,17 +111,17 @@ Some training details are shown below.
 ```
 
 
-## Requiremtnts
+## Requirements
 
 ![](https://img.shields.io/badge/Raspberry%20Pi-A22846?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white)
 
 
 ### Hardware
 - Raspberry (PI 3/4 suggested)
-- Camera      ![instert model]---------------- ????
-- LCD display ------------------ ????
+- Camera      [OV5647]
+- LCD display [K-0403]
 - INSERT CABLES
-- Structure ....
+- Structure base 34x34cm height 36cm
 
 
 ### Software and Dependencies
