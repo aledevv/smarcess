@@ -34,17 +34,17 @@ Insert gif or link to demo
 
 > [!WARNING]
 > **Weights are tuned using my chessboard and my pieces**.
-> If you want to use yours you have to fine-tune a new model (this applies to both corner and pieces detection)
+> If you want to use yours, you have to fine-tune a new model (this applies to both corner and pieces detection)
 
 > [!TIP]  
 > I found useful **[this notebook](https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolov8-object-detection-on-custom-dataset.ipynb)** to train the YOLOv8 model.
 
 ## Detection process
-1. When user makes a move a photo of their chessboard is taken
+1. When user makes a move, is taken a photo of their chessboard.
     <br> <img src="assets/photo.jpg" width="500"/>
-2. A first model detects corners of the chessboard
+2. A first model detects corners of the chessboard.
    <br> <img src="assets/corners.png" width="500"/>
-3. Image is cropped and transformed from 3D into 2D and squares position is mapped through a grid
+3. Image is cropped and transformed from 3D into 2D and squares position is mapped through a grid.
    <br> <img src="assets/grid.png" width="500"/>
 > [!NOTE]  
 > Since the camera has wide angle the image results to be distorted, as a result the **grid could not be perfectly aligned** to the squares. An __offset__ parameter has been applied to adjust the grid position once the camera is set on a fixed position.
@@ -121,12 +121,12 @@ Some training details are shown below.
 - Camera      [OV5647]
 - LCD display [K-0403]
 - INSERT CABLES
-- Structure base 34x34cm height 36cm
+- Structure: base 34x34cm height 36cm
 
 
 ### Software and Dependencies
 - How to set up the environment Rasperry, camera and see if they are working...
-- Considerations about AI model that it is traine on that chess board and if someone wants to do it as well they have to re-train the model... potremmo dire come fare brevemente
+- Considerations about AI model that it is traine on that chess board and if someone wants to do it as well they have to re-train the model... potremmo dire come fare brevemente ad esempio: Every time that we train a model we do an helth check, it means that  
 
 
 ## Installation
