@@ -50,7 +50,7 @@ Insert gif or link to demo
 > Since the camera has wide angle the image results to be distorted, as a result the **grid could not be perfectly aligned** to the squares. An __offset__ parameter has been applied to adjust the grid position once the camera is set on a fixed position.
 
 6. Pieces are detected with a second model
-   <br> <img src="assets/detection.jpg" width="500"/>
+   <br> <img src="assets/detection_.png" width="500"/>
 8. Piece positions are infered by intersecating bounding box areas with grid cells
 9. FEN is written and it can be exported to Lichess or sent to a Stockfish API for analysis
     <br> <img src="assets/virtual.png" width="500"/> <br>
