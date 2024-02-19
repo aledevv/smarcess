@@ -66,23 +66,29 @@ The same process is described in the repo linked above.
 We used YOLOv8n models to both train corners and pieces recognition.
 Some training details are shown below.
 ### Corners
-<div style="display: inline-block;">
-      <img src="assets/corners/conf_matrix.png">
-</div>
-<div style="display: inline-block;">
-  <img src="assets/corners/charts.png">
-</div>
+<table id="pics" style="border: 0">
+    <tr>
+      <td><img src="assets/corners/corners.png" width="500" /></td>
+      <td><img src="assets/corners/charts.png" width="500"/></td>
+    </tr>
+    <tr>
+      <td><img src="assets/corners/labels.jpeg" width="500"/></td>
+      <td><img src="assets/corners/batch_training.jpeg" width="500"/></td>
+    </tr>
+</table>
 
-![Confusion matrix](assets/corners/conf_matrix.png)
-![Train plots](assets/corners/charts.png)
-![Train labels](assets/corners/labels.jpeg)
-![Batch](assets/corners/batch_training.jpeg)
 
 ### Pieces
-![Confusion matrix](assets/pieces/conf_matrix_normalized.png)
-![Confusion matrix](assets/pieces/plots.png)
-![Train labels](assets/pieces/labels.png)
-![Correlogram](assets/pieces/correlogram.jpeg)
+<table id="pics" style="border: 0">
+    <tr>
+      <td><img src="assets/pieces/conf_matrix_normalized.png" width="500" /></td>
+      <td><img src="assets/pieces/plots.png" width="500"/></td>
+    </tr>
+    <tr>
+      <td><img src="assets/pieces/labels.png" width="500"/></td>
+      <td><img src="assets/pieces/correlogram.jpeg" width="500"/></td>
+    </tr>
+</table>
 
 ## Project layout
 
