@@ -66,6 +66,13 @@ The same process is described in the repo linked above.
 We used YOLOv8n models to both train corners and pieces recognition.
 Some training details are shown below.
 ### Corners
+<div style="display: inline-block;">
+      <img src="assets/corners/conf_matrix.png">
+</div>
+<div style="display: inline-block;">
+  <img src="assets/corners/charts.png">
+</div>
+
 ![Confusion matrix](assets/corners/conf_matrix.png)
 ![Train plots](assets/corners/charts.png)
 ![Train labels](assets/corners/labels.jpeg)
