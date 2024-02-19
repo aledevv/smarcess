@@ -5,16 +5,22 @@ from matplotlib.pyplot import figure
 from matplotlib import pyplot as plt
 import numpy as np
 from numpy import asarray
-from PIL import Image
 import cv2
 from shapely.geometry import Polygon
 import requests
 import json
 import sys
+import fen2pgn
+import time
+from picamera2 import Picamera2, Preview
+import libcamera
+from datetime import datetime
+from constants import *
 
 
 # PARAMETERS
 # ----------------------------------------------------
+
 
 # Stockfish modes
 stockfish_modes = {
@@ -73,7 +79,7 @@ def calculate_iou(box_1, box_2):
 def detect_corners(img):
     # YOLO model trained to detect corners on a chessboard
     model_trained = YOLO(corners_weights)
-    results = model_trained.predict(source=img, line_width=1, conf=0.25, save_txt=True, save=True)
+    results = model_trained.predict(source=img, line_width=1, conf=0.25, save_txt=False, save=False)
 
     # get the corners coordinates from the model
     boxes = results[0].boxes
@@ -173,7 +179,7 @@ def plot_grid_on_transformed_image(image):
 def chess_pieces_detector(image):
 
     model_trained = YOLO(weights_pieces)
-    results = model_trained.predict(source=image, line_width=1, conf=0.5, augment=False, save_txt=True, save=True)
+    results = model_trained.predict(source=image, line_width=1, conf=0.5, augment=False, save_txt=False, save=False)
 
     boxes = results[0].boxes
     detections = boxes.xyxy.numpy()
@@ -194,6 +200,7 @@ def connect_square_to_detection(detections, square, boxes):
 
     for i in detections:
 
+        
         box_x1 = i[0]
         box_y1 = i[1]
 
@@ -229,7 +236,20 @@ def connect_square_to_detection(detections, square, boxes):
         return piece
 
 
-def getFEN(image):
+def getFEN(image, color):
+    #print("Player color: " + str(color))
+    
+    #print("detecting...")
+    im = Image.open(image)
+    
+    if color == Turn.WHITE:
+        out = im.rotate(-90)
+    elif color == Turn.BLACK:
+        out = im.rotate(90)
+    #else:
+        #print("ROTATION PROBLEM")
+        
+    out.save(image)
 
     corners, boxes = detect_corners(image)
 
@@ -353,25 +373,35 @@ def getFEN(image):
 
     for line in FEN_annotation:
         line_to_FEN = []
+        empty_squares = 0
         for square in line:
             piece_on_square = connect_square_to_detection(detections, square, boxes)
-            line_to_FEN.append(piece_on_square)
-        corrected_FEN = [i.replace('empty', '1') for i in line_to_FEN]
-
-        board_FEN.append(corrected_FEN)
+            if piece_on_square == 'empty':
+                empty_squares+=1
+            else:
+                if empty_squares > 0:
+                    line_to_FEN.append(str(empty_squares))
+                    empty_squares = 0
+                line_to_FEN.append(piece_on_square)
+        #corrected_FEN = [i.replace('empty', '1') for i in line_to_FEN]
+        if empty_squares > 0:
+            line_to_FEN.append(str(empty_squares))
+        board_FEN.append(line_to_FEN)
 
     complete_board_FEN = [''.join(line) for line in board_FEN]
 
     to_FEN = '/'.join(complete_board_FEN)
 
-    print("https://lichess.org/analysis/" + to_FEN)
+    #print("https://lichess.org/analysis/" + to_FEN)
 
     return to_FEN
 
 
 def getRequestToStockfishAPI(fen, depth, mode):
-    msg = requests.get(f'https://stockfish.online/api/stockfish.php?fen={fen} w - - {depth} 11&depth=5&mode={mode}')
-    # print("Status code:" + str(msg.status_code))
+    #print("FEN sent: " + fen)
+    msg = requests.get(f'https://stockfish.online/api/stockfish.php?fen={fen}&depth={depth}&mode={mode}')
+    #print("Status code:" + str(msg.status_code))
+    #print("content: " + msg.text)
     return msg.content
 
 
@@ -384,14 +414,14 @@ def set_stockfish_params(args):
         opened_image = Image.open(args[1])
         if opened_image.format.lower() in ['png', 'jpg', 'jpeg', 'bmp']:
             _img = args[1]
-        else:
-            print("Error with the image")
+        #else:
+            #print("Error with the image")
 
     if len(args) >= 2:
         if 0 < int(args[2]) < 14:
             _depth = args[2]
         else:
-            print("depth must be a positive integer < 14")
+            #print("depth must be a positive integer < 14")
             sys.exit(1)
 
     if len(args) >= 3:
@@ -402,19 +432,42 @@ def set_stockfish_params(args):
             _mode = stockfish_modes["best line"]
         elif inserted_mode == "evaluation":
             _mode = stockfish_modes["evaluation"]
-        else:
-            print("Unknown mode")
-            sys.exit(1)
+        #else:
+            #print("Unknown mode")
+            #sys.exit(1)
 
     return _img, _depth, _mode
 
 
-def rotate_image(img):
-    im = Image.open(img)
-    
-    out = im.rotate(180)
-    out.save(img)
 
+
+def cancel_engine_move(turn):
+    pass
+
+def new_move(turn, player_color, depth, board, picam): #picam
+    if turn == player_color:
+        take_photo(picam) # picam
+        current_fen = getFEN(CURRENT_IMAGE_PATH, player_color)
+        move = fen2pgn.Two_fen_to_pgn(board.fen(), current_fen)
+        if move != None:
+            board.push(move)
+            response = getRequestToStockfishAPI(board.fen(), depth, "bestmove")  # Stockfish API request to get evaluation or best move/line
+            json_response = json.loads(response)    # convert bytes response into json object
+            stockfish_move = chess.Move.from_uci(json_response['data'].split(' ')[1])
+            return move, stockfish_move, None
+        else:
+            return None, None, current_fen
+def take_photo(picam):
+    time.sleep(1)
+    picam.capture_file(CURRENT_IMAGE_PATH)
+
+
+def equal_position(check_fen, picam, player_color): # picam
+    take_photo(picam) # picam
+    current_fen = getFEN(CURRENT_IMAGE_PATH, player_color)
+    return fen2pgn.compare_FEN(check_fen, current_fen), current_fen
+
+'''
 # syntax CLI: python main.py "img.jpeg" 5 "best move"
 if __name__ == '__main__':
 
@@ -434,3 +487,4 @@ if __name__ == '__main__':
     json_response = json.loads(response)    # convert bytes response into json object
 
     print(json_response['data'])    # 'data' contains string with the best move
+'''
