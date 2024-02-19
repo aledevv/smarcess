@@ -43,7 +43,7 @@ Insert gif or link to demo
 1. When user makes a move, is taken a photo of their chessboard.
     <br> <img src="assets/photo.jpeg" width="500"/>
 2. A first model detects corners of the chessboard.
-   <br> <img src="assets/corners.jpeg" width="500"/>
+   <br> <img src="assets/corners.png" width="500"/>
 3. Image is cropped and transformed from 3D into 2D and squares position is mapped through a grid.
    <br> <img src="assets/grid.png" width="500"/>
 > [!NOTE]  
