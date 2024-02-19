@@ -3,7 +3,7 @@
 # Smartchess
 
 <div align='center'>
-<img src="assets/chess.png" alt="drawing" width="150"/>
+<img src="assets/chess2.png" alt="drawing" width="150"/>
 </div>
 
 <br>
