@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import cairosvg
-import chess
 import engine
 from constants import *
 
@@ -29,13 +28,13 @@ class ChessboardApp:
         # Create the main window
         self.start_window = tk.Tk()
         sw = self.start_window
-        self.start_window.title("Smarcess")
+        self.start_window.title("Smartchess")
         self.start_window.geometry("480x300")
         
         quit_button = tk.Button(sw, text="Quit", anchor=tk.NW, command=self.exit_popup)
         quit_button.pack(side=tk.TOP, anchor=tk.NW)
         # Create and pack title label
-        title_label = tk.Label(sw, text="Smarcess", font=("DejaVu Sanstica", 24))
+        title_label = tk.Label(sw, text="Smartchess", font=("DejaVu Sanstica", 24))
         title_label.pack()
 
         difficulty_frame = tk.Frame(sw)
@@ -113,7 +112,7 @@ class ChessboardApp:
         if not board_ready:
             messagebox.showinfo("Error", "Set chessboard at starting position")
         else:
-            self.game_window.title("Smarcess")
+            self.game_window.title("Smartchess")
             self.game_window.geometry("480x300")
 
             self.left_frame = tk.Frame(self.game_window, height=240, width=240)
@@ -128,7 +127,7 @@ class ChessboardApp:
             self.top_left_frame.pack()
             tlf = self.top_left_frame
             
-            self.info_button = tk.Button(tlf, text="Info",command=self.info_move, width=10, height=2)
+            self.info_button = tk.Button(tlf, text="Info",command=self.info_action, width=10, height=2)
             self.info_button.grid(column = 0, row = 0)     
 
             self.resign_button = tk.Button(tlf, text="Resign", command=self.exit_popup, width=10, height=2)
@@ -219,7 +218,13 @@ class ChessboardApp:
             #print("player part")
             current_move, self.stockfish_move, self.detected_fen = engine.new_move(self.turn, self.player_color, self.depth, self.board.copy(), self.picam)
             if current_move != None:
-                self.update_gui_move(current_move, self.stockfish_move)
+                if self.board.is_game_over():
+                    if self.board.is_checkmate():
+                        self.mate_action("checkmate", self.turn)
+                    else:
+                        self.mate_action("stalemate", self.turn)
+                else:
+                    self.update_gui_move(current_move, self.stockfish_move)
             else:
                 self.illegal_move(self.detected_fen, self.player_color, "Illegal move")
         else:
@@ -228,8 +233,14 @@ class ChessboardApp:
              board_clone.push(self.stockfish_move)
              is_equal, self.detected_fen = engine.equal_position(board_clone.fen(), self.picam, self.player_color)
              if is_equal:
-                 self.update_gui_move(self.stockfish_move, None)
-                 self.board.push(self.stockfish_move)
+                if board_clone.is_game_over():
+                    if board_clone.is_checkmate():
+                        self.mate_action("checkmate", self.turn)
+                    else:
+                        self.mate_action("stalemate", self.turn)
+                else:
+                    self.update_gui_move(self.stockfish_move, None)
+                    self.board.push(self.stockfish_move)
              else:
                  self.illegal_move(self.detected_fen, self.player_color, "Not stockfish move")
                 
@@ -281,15 +292,29 @@ class ChessboardApp:
         self.scroll_canvas.config(scrollregion=self.scroll_canvas.bbox("all"))
         self.scroll_canvas.yview_moveto('1.0')
     
-    def info_move(self):
+    def info_action(self):
         global info_popup
         info_popup = tk.Toplevel()
         info_popup.title("Info")
-        popup.geometry("250x250")
+        info_popup.geometry("250x250")
         label2 = tk.Label(info_popup, text=f"Difficulty:{self.difficulty}").pack(pady=10)
         label3 = tk.Label(info_popup, text="Created by:\nAlessandro De Vidi, Daniele Marisa, Enrico Tenuti").pack(pady=10)
         ok_button = tk.Button(info_popup, text="Ok", command=info_popup.destroy, width=10, height=3)
         ok_button.pack()
+    
+    def mate_action(self, mate, turn):
+        global mate_popup
+        mate_popup = tk.Toplevel()
+        mate_popup.title("Info")
+        mate_popup.geometry("250x250")
+        if mate == "Stalemate":
+            label = tk.Label(mate_popup, text="You drew").pack(pady=10)
+        else: 
+            if turn == self.player_color:
+                label = tk.Label(mate_popup, text="You won").pack(pady=10)
+            else: label = tk.Label(mate_popup, text="You lost").pack(pady=10)
+        exit_button = tk.Button(mate_popup, text="Exit", command=self.exit_fuction, width=10, height=3)
+        exit_button.pack()
             
 def create_chessboard_svg(fen_position, player_color, second_move, error = False):
     board = chess.Board(fen_position)
