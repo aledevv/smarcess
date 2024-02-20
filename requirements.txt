@@ -6,3 +6,6 @@ numpy~=1.26.2
 opencv-python>=4.9.0.80
 pillow~=10.2.0
 requests~=2.31.0
+cairosvg~=2.7.1
+chess~=1.10.0
+picamera~=0.3.16
