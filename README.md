@@ -204,7 +204,9 @@ The games ends either according to chess game rules (checkmate, stalemate, repet
 
 ## Links
 
-- Presentation link (penso sia meglio Google Presentation)
+- [Presentation link](https://docs.google.com/presentation/d/12JJgGUjxVQPKkN6xJS_Uz7CiUyjn4UuTajRMokCkEvQ/edit?usp=sharing)
+
+  
 ## Authors
 
 - [Alessandro De Vidi](https://www.github.com/aledevv)
