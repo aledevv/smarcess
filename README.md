@@ -39,8 +39,10 @@ Insert gif or link to demo
 - _images_ folder contains pictures to process.
 
 - _weights_: folder containing model weights for detections
+
+
 > [!WARNING]
-> **Weights are tuned using my chessboard and my pieces**.
+> **Weights are tuned using our chessboard and pieces**.
 > If you want to use yours, you have to fine-tune a new model (this applies to both corner and pieces detection)
 
 ## Project layout
@@ -91,8 +93,8 @@ Insert gif or link to demo
 ├── requirements.txt
 └── weights
     ├── new_corners.pt
-    └── pieces.pt```
-
+    └── pieces.pt
+```
 ## Detection process
 1. When user makes a move, is taken a photo of their chessboard.
     <br> <img src="assets/photo_.jpeg" width="500"/>
@@ -173,11 +175,25 @@ Install tk-inter for gui
 ```bash
 sudo apt-get install python-tk
 ```
-## Usage/Examples
+## Usage
 
 ```bash
 python main.py
 ```
+The opening windows will ask you to choose difficulty and which color you are going to play. Pressing "Play" a position check will be launched to verify whether the pieces are set in the starting postion, if they don't an error pop-up will be shown, otherwise the game window will appear.
+
+[IMAGE]
+
+The game window will show the current board position.
+
+If you are **playing with the white pices** you have to play a move and press "New move". 
+
+If you are **playing with the black pieces** you have to make engine's move, then yours and press "New Move".
+
+[IMAGE]
+
+Each time the engine or the player will make a move a **positional check** has to be excuted to veify the correctness of the position, in case of illegal move or if the player made engine's move wrongly an **error pop-up** will be shown, asking to correct the mistake.
+
 
 
 ## Links
