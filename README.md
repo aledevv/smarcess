@@ -120,7 +120,7 @@ Some training details are shown below.
 - Raspberry (PI 3/4 suggested)
 - Camera      [OV5647]
 - LCD display [K-0403]
-- INSERT CABLES
+- FFC cable 15 pin
 - Structure: base 34x34cm height 36cm
 
 
