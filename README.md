@@ -23,7 +23,7 @@ Application for Raspberry PI to play chess games on a real chessboard against St
 
 ## Demo
 
-Insert gif or link to demo
+[![](https://markdown-videos-api.jorgenkh.no/youtube/gtDqMxrO9MM)](https://youtu.be/gtDqMxrO9MM)
 
 
 ## Files and directories
@@ -204,6 +204,8 @@ The games ends either according to chess game rules (checkmate, stalemate, repet
 
 
 ## Links
+
+- [YouTube video link](https://youtu.be/gtDqMxrO9MM)
 
 - [Presentation link](https://docs.google.com/presentation/d/12JJgGUjxVQPKkN6xJS_Uz7CiUyjn4UuTajRMokCkEvQ/edit?usp=sharing)
 
