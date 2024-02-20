@@ -19,7 +19,7 @@
 Application for Raspberry PI to play chess games on a real chessboard against Stockfish chess engine.
 
 
-## Demo
+## Demo video
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/gtDqMxrO9MM/0.jpg)](https://www.youtube.com/watch?v=gtDqMxrO9MM)
 
