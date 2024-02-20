@@ -182,7 +182,7 @@ python main.py
 ```
 The opening windows will ask you to choose difficulty and which color you are going to play. Pressing "Play" a position check will be launched to verify whether the pieces are set in the starting postion, if they don't an error pop-up will be shown, otherwise the game window will appear.
 
-[IMAGE]
+<div align="center"><img src="assets/opening_win.jpeg" width="500"/></div>
 
 The game window will show the current board position.
 
@@ -190,10 +190,16 @@ If you are **playing with the white pices** you have to play a move and press "N
 
 If you are **playing with the black pieces** you have to make engine's move, then yours and press "New Move".
 
-[IMAGE]
+<div align="center"><img src="assets/game_win.jpeg" width="500"/></div>
 
-Each time the engine or the player will make a move a **positional check** has to be excuted to veify the correctness of the position, in case of illegal move or if the player made engine's move wrongly an **error pop-up** will be shown, asking to correct the mistake.
+Moves are stored on the right side of the window (white's move on the left and black's ones on the right).
+Each time the engine or the player will make a move a **positional check** has to be excuted to veify the correctness of the position. In case of illegal move or if the player made engine's move wrongly an **error pop-up** will be shown, asking to correct the mistake.
+The games ends either according to chess game rules (checkmate, stalemate, repetition...) or by using the "Resign" button for the user.
 
+> [!CAUTION]
+> **Resign button is heighly suggested to exit the game**.
+> 
+> If you want to quit the game, use the "Resign" button instead of closing a window. By opening the game again camera issues could happen.
 
 
 ## Links
