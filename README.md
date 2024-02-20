@@ -23,7 +23,7 @@ Application for Raspberry PI to play chess games on a real chessboard against St
 
 ## Demo
 
-[![Blinking LEDs](http://img.youtube.com/vi/XAMVzS13HY0/0.jpg)](https://www.youtube.com/watch?v=gtDqMxrO9MM "Blinking LEDs")
+[![VIDEO]](https://www.youtube.com/watch?v=gtDqMxrO9MM)
 
 
 ## Files and directories
