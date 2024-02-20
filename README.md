@@ -26,18 +26,17 @@ Application for Raspberry PI to play chess games on a real chessboard against St
 Insert gif or link to demo
 
 ## Files and directories
-- The notebook _app.ipynb_ contains all the code for detection
-  
-- The same code in the notebook is unified in _main.py_
+- _main.py_: main application
+
+- gui.oy: the code of the user interface
+
+- engine.py: code of ML models for position inference and game management
 
 - _images_ folder contains pictures to process.
 
 > [!WARNING]
 > **Weights are tuned using my chessboard and my pieces**.
 > If you want to use yours, you have to fine-tune a new model (this applies to both corner and pieces detection)
-
-> [!TIP]  
-> I found useful **[this notebook](https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolov8-object-detection-on-custom-dataset.ipynb)** to train the YOLOv8 model.
 
 ## Detection process
 1. When user makes a move, is taken a photo of their chessboard.
@@ -91,7 +90,6 @@ Some training details are shown below.
 ├── 2fen_pgn.py
 ├── README.md
 ├── assets
-│   ├── chess.png
 │   ├── chess2.png
 │   └── state_machine.png
 ├── engine.py
@@ -153,8 +151,6 @@ python main.py
 
 
 ## Links
-
-- [YouTube Demo Video]()    **_ADD LINK HERE_**
 
 - Presentation link (penso sia meglio Google Presentation)
 ## Authors
