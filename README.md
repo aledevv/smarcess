@@ -28,15 +28,70 @@ Insert gif or link to demo
 ## Files and directories
 - _main.py_: main application
 
-- gui.oy: the code of the user interface
+- _gui.py_: the code of the user interface
 
-- engine.py: code of ML models for position inference and game management
+- _2fen_pgn_: function to convert 2 FEN images to PGN move
+
+- constants.py: file in which all constant values and parameters are present
+
+- _engine.py_: code of ML models for position inference and game management
 
 - _images_ folder contains pictures to process.
 
+- _weights_: folder containing model weights for detections
 > [!WARNING]
 > **Weights are tuned using my chessboard and my pieces**.
 > If you want to use yours, you have to fine-tune a new model (this applies to both corner and pieces detection)
+
+## Project layout
+
+
+```bash
+├── 2fen_pgn.py
+├── README.md
+├── assets
+│   ├── chess2.png
+│   ├── corners
+│   │   ├── batch_training.jpeg
+│   │   ├── charts.png
+│   │   ├── corners.png
+│   │   ├── labels.jpeg
+│   │   └── p-curve.png
+│   ├── corners_.png
+│   ├── grid_.png
+│   ├── photo_.jpeg
+│   ├── pieces
+│   │   ├── conf_matrix.png
+│   │   ├── conf_matrix_normalized.png
+│   │   ├── correlogram.jpeg
+│   │   ├── labels.png
+│   │   ├── plots.png
+│   │   ├── pr_curve.png
+│   │   ├── results.csv
+│   │   ├── roboflow_deploy
+│   │   │   ├── model_artifacts.json
+│   │   │   ├── results.csv
+│   │   │   ├── results.png
+│   │   │   └── state_dict.pt
+│   │   └── roboflow_deploy.zip
+│   ├── pieces_.png
+│   └── virtual_.png
+├── constants.py
+├── engine.py
+├── fen2pgn.py
+├── gui.py
+├── images
+│   ├── png
+│   │   ├── 1.jpeg
+│   │   └── chessboard.png
+│   └── svg
+│       └── chessboard.svg
+├── libcairo.2.dylib
+├── main.py
+├── requirements.txt
+└── weights
+    ├── new_corners.pt
+    └── pieces.pt```
 
 ## Detection process
 1. When user makes a move, is taken a photo of their chessboard.
@@ -82,31 +137,6 @@ Some training details are shown below.
       <td><img src="assets/pieces/correlogram.jpeg" width="500"/></td>
     </tr>
 </table>
-
-## Project layout
-
-
-```bash
-├── 2fen_pgn.py
-├── README.md
-├── assets
-│   ├── chess2.png
-│   └── state_machine.png
-├── engine.py
-├── gui.py
-├── images
-│   ├── png
-│   │   ├── 1.jpeg
-│   │   └── chessboard.png
-│   └── svg
-│       └── chessboard.svg
-├── libcairo.2.dylib
-├── main.py
-├── requirements.txt
-└── weights
-    ├── new_corners.pt
-    └── pieces.pt
-```
 
 
 ## Requirements
