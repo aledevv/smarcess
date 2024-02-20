@@ -12,7 +12,6 @@ import json
 import sys
 import fen2pgn
 import time
-from picamera2 import Picamera2, Preview
 import libcamera
 from datetime import datetime
 from constants import *
@@ -451,10 +450,13 @@ def new_move(turn, player_color, depth, board, picam): #picam
         move = fen2pgn.Two_fen_to_pgn(board.fen(), current_fen)
         if move != None:
             board.push(move)
-            response = getRequestToStockfishAPI(board.fen(), depth, "bestmove")  # Stockfish API request to get evaluation or best move/line
-            json_response = json.loads(response)    # convert bytes response into json object
-            stockfish_move = chess.Move.from_uci(json_response['data'].split(' ')[1])
-            return move, stockfish_move, None
+            if not board.is_game_over():
+                response = getRequestToStockfishAPI(board.fen(), depth, "bestmove")  # Stockfish API request to get evaluation or best move/line
+                json_response = json.loads(response)    # convert bytes response into json object
+                stockfish_move = chess.Move.from_uci(json_response['data'].split(' ')[1])
+                return move, stockfish_move, None
+            else:
+                return move, Nome, None
         else:
             return None, None, current_fen
 def take_photo(picam):
