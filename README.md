@@ -126,7 +126,8 @@ Some training details are shown below.
 
 ### Software and Dependencies
 - How to set up the environment Rasperry, camera and see if they are working...
-- Considerations about AI model that it is traine on that chess board and if someone wants to do it as well they have to re-train the model... potremmo dire come fare brevemente ad esempio: Every time that we train a model we do an helth check, it means that  
+- Every time  we train a model we do an helth dataset check which shows the disposition of every piece on the board and how many time it appears on each square.
+  We re-trained the model in the areas where pieces were less rapresented, we did this to improve as much as possible the generalization.
 
 
 ## Installation
