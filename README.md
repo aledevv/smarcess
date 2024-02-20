@@ -25,6 +25,7 @@ Application for Raspberry PI to play chess games on a real chessboard against St
 
 Insert gif or link to demo
 
+
 ## Files and directories
 - _main.py_: main application
 
