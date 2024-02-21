@@ -161,10 +161,10 @@ Some training details are shown below.
 
 ## Installation
 
-Clone respository   [TO UPDATE]
+Clone respository
 
 ```bash
-git clone https://github.com/aledevv/smarcess.git
+git clone https://github.com/aledevv/smartchess.git
 ```
 Install requirements
 ```bash
